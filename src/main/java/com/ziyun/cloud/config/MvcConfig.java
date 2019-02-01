@@ -20,7 +20,7 @@ public class MvcConfig implements WebMvcConfigurer {
     /** 直接可访问的url */
     public static String[] IGNORE_URLS = new String[] {
             "/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/webjars/**",
-        "/static/**",  "/**/**/*" };
+        "/static/**","/static/layui/**","/error","/login/*" , "/**/**/*" };
 
     @Autowired
     private Interceptor interceptor;

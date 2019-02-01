@@ -1,6 +1,5 @@
 package com.ziyun.cloud.module.operator.controller;
 
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import com.ziyun.cloud.constant.BaseException;
 import com.ziyun.cloud.constant.BaseResult;
 import com.ziyun.cloud.constant.ResultCode;
@@ -33,10 +32,9 @@ public class LoginController {
         return view;
     }
 
-
     @RequestMapping(MODEL + "/doLogin")
     @ResponseBody
-    public BaseResult<?> doLogin(OperatorVo operatorVo, Model model) {
+    public BaseResult<?> doLogin(OperatorVo operatorVo) {
         BaseResult<?> baseResult =null;
         if (null != operatorVo) {
             Operator operator = this.iOperatorService.getOperatorByIdAndPwd(operatorVo);

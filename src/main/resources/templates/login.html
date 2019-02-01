@@ -44,7 +44,7 @@
             "operator_id":$("#operator_id").val(),
             "operator_pwd":$("#operator_pwd").val()
         } ;
-        doAjax("/doLogin","post",{"operatorVo":JSON.stringify(operatorVo)},"application/json",function (res) {
+        doAjax("doLogin","post",{"operatorVo":JSON.stringify(operatorVo)},"application/json",function (res) {
             console.log(res);
             if(res.code==1){
                 //成功

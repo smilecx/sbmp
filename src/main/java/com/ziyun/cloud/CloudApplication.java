@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@ComponentScan(basePackages = {"com.ziyun.cloud.*"})
-@MapperScan(basePackages = {"com.ziyun.cloud.module.*"})
+@ComponentScan(basePackages = {"com.ziyun.cloud.config","com.ziyun.cloud.module.*.controller","com.ziyun.cloud.module.*.service"})
+@MapperScan(basePackages = {"com.ziyun.cloud.module.*.mapper"})
 @EnableWebMvc
 @SpringBootApplication
 public class CloudApplication {
