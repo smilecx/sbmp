@@ -9,17 +9,17 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
 import javax.annotation.PostConstruct;
-
 /**
  * @Author:chenxiaoyi
  * @Date:2019/2/1 13:56
  */
-@Configuration
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Configuration
 public class FreemarkerConfig {
+
     @Autowired
     private freemarker.template.Configuration configuration;
 
@@ -38,7 +38,7 @@ public class FreemarkerConfig {
         // 加载html的资源路径
         configuration.setSharedVariable("webctx", webctx);
 
-//        freeMarkerConfigurer.getConfiguration().setTagSyntax(0);
+        freeMarkerConfigurer.getConfiguration().setTagSyntax(0);
     }
 
 }
