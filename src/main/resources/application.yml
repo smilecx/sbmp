@@ -1,0 +1,28 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: api-service
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    default-property-inclusion: NON_NULL #序列化全部不为空的属性
+  datasource:
+    url: jdbc:mysql://localhost:3306/wx_mall?useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  freemarker:
+    request-context-attribute: req  #req访问request
+    suffix: .html  #后缀名
+    content-type: text/html
+    enabled: true
+    cache: false #缓存配置
+    template-loader-path: classpath:/templates/ #模板加载路径 按需配置
+    charset: UTF-8 #编码格式
+    settings:
+      number_format: '0.##'   #数字格式化，无小数点
+      object_wrapper: freemarker.ext.beans.BeansWrapper #配置freemarker可循环map-value为java对象
+debug: true
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/**/*.xml
