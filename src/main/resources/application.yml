@@ -8,7 +8,7 @@ spring:
     time-zone: GMT+8
     default-property-inclusion: NON_NULL #序列化全部不为空的属性
   datasource:
-    url: jdbc:mysql://localhost:3306/wx_mall?useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://localhost:3306/chinamobile_db?useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
