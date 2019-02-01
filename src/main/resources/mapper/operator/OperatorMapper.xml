@@ -15,8 +15,9 @@
         operator_id, operator_name, operator_pwd, admin_type
     </sql>
 
-    <select id="queryOperatorByIdAndPwd" resultMap="BaseResultMap">
-        select <include refid="Base_Column_List"></include>
-         from operator where operator_id=#{operator_id} and operator_pwd=#{operator_pwd}
+    <select id="queryOperatorByIdAndPwd" resultMap="BaseResultMap" parameterType="com.ziyun.cloud.module.operator.entity.Operator">
+        select *
+         from operator where operator_id=#{operator.operatorId}
+          and operator_pwd=#{operator.operatorPwd}
     </select>
 </mapper>

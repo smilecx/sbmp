@@ -1,22 +1,13 @@
 
 package com.ziyun.cloud.config;
 
-import com.baomidou.mybatisplus.core.MybatisConfiguration;
-import com.baomidou.mybatisplus.core.MybatisXMLLanguageDriver;
 import com.baomidou.mybatisplus.core.injector.DefaultSqlInjector;
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
-import com.baomidou.mybatisplus.extension.MybatisMapWrapperFactory;
 import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
-import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.type.JdbcType;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ResourceLoader;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
-import javax.sql.DataSource;
 
 /**
  * 
@@ -36,22 +27,22 @@ public class MybatisPlusConfig {
 		return page;
 	}
 
-	@Bean
-	public SqlSessionFactory sqlSessionFactory(DataSource dataSource, ResourceLoader resourceLoader) throws Exception {
-		MybatisSqlSessionFactoryBean sqlSessionFactory = new MybatisSqlSessionFactoryBean();
-		MybatisConfiguration configuration = new MybatisConfiguration();
-		configuration.setDefaultScriptingLanguage(MybatisXMLLanguageDriver.class);
-		configuration.setJdbcTypeForNull(JdbcType.NULL);
-		//*注册Map 下划线转驼峰*/
-		configuration.setObjectWrapperFactory(new MybatisMapWrapperFactory());
-
-		sqlSessionFactory.setDataSource(dataSource);
-		sqlSessionFactory.setConfiguration(configuration);
-		PaginationInterceptor bean = getPaginationInterceptor();
-		sqlSessionFactory.setPlugins(new PaginationInterceptor[] {bean});
-		// ...其他配置
-		return sqlSessionFactory.getObject();
-	}
+//	@Bean
+//	public SqlSessionFactory sqlSessionFactory(DataSource dataSource, ResourceLoader resourceLoader) throws Exception {
+//		MybatisSqlSessionFactoryBean sqlSessionFactory = new MybatisSqlSessionFactoryBean();
+//		MybatisConfiguration configuration = new MybatisConfiguration();
+//		configuration.setDefaultScriptingLanguage(MybatisXMLLanguageDriver.class);
+//		configuration.setJdbcTypeForNull(JdbcType.NULL);
+//		//*注册Map 下划线转驼峰*/
+//		configuration.setObjectWrapperFactory(new MybatisMapWrapperFactory());
+//
+//		sqlSessionFactory.setDataSource(dataSource);
+//		sqlSessionFactory.setConfiguration(configuration);
+//		PaginationInterceptor bean = getPaginationInterceptor();
+//		sqlSessionFactory.setPlugins(new PaginationInterceptor[] {bean});
+//		// ...其他配置
+//		return sqlSessionFactory.getObject();
+//	}
 
 	@Bean
 	public ISqlInjector getISqlInjector() {

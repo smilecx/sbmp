@@ -9,6 +9,7 @@ import com.ziyun.cloud.module.operator.vo.OperatorVo;
 import com.ziyun.cloud.utils.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,7 +35,7 @@ public class LoginController {
 
     @RequestMapping(MODEL + "/doLogin")
     @ResponseBody
-    public BaseResult<?> doLogin(OperatorVo operatorVo) {
+    public BaseResult<?> doLogin(@RequestBody OperatorVo operatorVo) {
         BaseResult<?> baseResult =null;
         if (null != operatorVo) {
             Operator operator = this.iOperatorService.getOperatorByIdAndPwd(operatorVo);
@@ -48,6 +49,7 @@ public class LoginController {
             }
         }
         return baseResult;
-
     }
+
+
 }
