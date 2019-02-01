@@ -1,0 +1,77 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta name="renderer" content="webkit">
+
+<link rel="stylesheet" href="${webctx}/layui/css/layui.css" media="all">
+
+<script src="${webctx}/layui/layui.js"></script>
+<script src="${webctx}/layui/lay/modules/layer.js"></script>
+<link rel="stylesheet" href="${webctx}/css/pintuer.css">
+
+<link rel="stylesheet" href="${webctx}/css/admin.css">
+<script src="${webctx}/js/jquery.js"></script>
+<script src="../../static/js/pintuer.js"></script>
+
+
+<script>
+
+    function doAjax(url,type,param,contentType,success_cb,error_cb,return_type){
+        $(document.body).append('<div style="width: 100%;height: 100%;position: fixed;top: 0px;left: 0px;z-index: 99999;" class="log_bg_00123"></div>');
+        setTimeout(function(){
+            $(".log_bg_00123").remove()
+        },1000)
+        if(!arguments[1]) type = "post";
+        if(!arguments[3]) contentType = "application/x-www-form-urlencoded";
+        if(!arguments[4]) success_cb = function(data,html_dom){
+            //默认成功回调
+        }
+        if(!arguments[6]) return_type = 'json';
+
+        if(!arguments[5]) error_cb = function(msg){
+            //默认失败回调
+            var status_code =  msg.status;
+            if(status_code == 403){//未登录
+                if(navigator.userAgent.match(/(iPhone|iPod|Android|ios)/i)){
+                    location.href = '/wap/login';
+                }else{
+                    //$.login();
+                    //$.alert('error','登陆过期，请重新登陆');
+                    //setTimeout("location.href = '/login'",1000);
+                    if(window.top){
+                        window.top.location.href="/login/toLogin";
+                    }else{
+                        location.href = '/login';
+                    }
+                }
+            }else if(status_code == 419){//csrf_token过期
+                alert('页面过期，请刷新页面');
+                setTimeout("location.reload()",1000);
+            }else if(status_code == 422){//后端validate验证未通过
+                var error_msg = jQuery.parseJSON(msg['responseText']);
+                for(x in error_msg['errors']){
+                    return;
+                }
+            }else{
+                alert(msg.message);
+            }
+
+        }
+
+        $.ajax({
+            url: url,
+            type:type,     //请求类型
+            data:param,  //请求的数据
+            contentType:contentType,//请求的参数类型
+            dataType:return_type,  //数据类型
+            success: success_cb,
+            error: error_cb,
+            complete:function(){
+                $(".log_bg_00123").remove();
+            }
+
+        })
+
+
+    }
+</script>

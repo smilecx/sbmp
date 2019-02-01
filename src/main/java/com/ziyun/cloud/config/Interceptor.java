@@ -1,5 +1,6 @@
 package com.ziyun.cloud.config;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
  * @Author:chenxiaoyi
  * @Date:2019/2/1 14:03
  */
+@Configuration
 public class Interceptor implements HandlerInterceptor {
 
     @Override

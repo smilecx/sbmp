@@ -1,13 +1,11 @@
 package com.ziyun.cloud.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.format.datetime.DateFormatter;
 import org.springframework.util.ResourceUtils;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 /**
  * @Author:chenxiaoyi
@@ -15,12 +13,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 
 
+@EnableWebMvc
+@Configuration
 public class MvcConfig implements WebMvcConfigurer {
 
     /** 直接可访问的url */
     public static String[] IGNORE_URLS = new String[] {
             "/swagger-resources/**", "/swagger-ui.html", "/v2/api-docs", "/webjars/**",
-          "/**/**/*" };
+        "/static/**",  "/**/**/*" };
 
     @Autowired
     private Interceptor interceptor;
