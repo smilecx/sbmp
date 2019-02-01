@@ -19,7 +19,7 @@ import javax.annotation.PostConstruct;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class FreemarkConfig {
+public class FreemarkerConfig {
     @Autowired
     private freemarker.template.Configuration configuration;
 
@@ -29,7 +29,7 @@ public class FreemarkConfig {
 
     // @Value("${webctx}")
     // TODO oss or local
-    private String webctx = "../../vue";
+    private String webctx = "../../static";
 
     // Spring 初始化的时候加载配置
     @PostConstruct
@@ -38,7 +38,7 @@ public class FreemarkConfig {
         // 加载html的资源路径
         configuration.setSharedVariable("webctx", webctx);
 
-        freeMarkerConfigurer.getConfiguration().setTagSyntax(0);
+//        freeMarkerConfigurer.getConfiguration().setTagSyntax(0);
     }
 
 }

@@ -1,12 +1,18 @@
 package com.ziyun.cloud.constant;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * @Author:chenxiaoyi
  * @Date:2019/1/31 19:23
  */
+@Getter
+@Setter
 public class BaseException extends RuntimeException {
 
     private ResultCode resultCode;
+
 
     public BaseException(ResultCode resultCode) {
         this.resultCode = resultCode;
