@@ -16,7 +16,7 @@
     </sql>
 
     <select id="queryOperatorByIdAndPwd" resultMap="BaseResultMap" parameterType="com.ziyun.cloud.module.operator.entity.Operator">
-        select *
+        select <include refid="Base_Column_List"></include>
          from operator where operator_id=#{operator.operatorId}
           and operator_pwd=#{operator.operatorPwd}
     </select>
