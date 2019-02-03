@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>操作员列表</title>
+    [#include "/includes/public.html" /]
+</head>
+<body>
+<form action="" method="post">
+    <table class="layui-hide" id="test"></table>
+</form>
+
+<script>
+    layui.use('table', function(){
+        var table = layui.table;
+
+        table.render({
+            elem: '#test'
+            ,url:'/operator/loadAllOperator'
+            ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                //,curr: 5 //设定初始在第 5 页
+                ,groups: 1 //只显示 1 个连续页码
+                ,first: false //不显示首页
+                ,last: false //不显示尾页
+
+            }
+            ,cols: [ [
+                {field:'operatorId', align: 'center', title: '登录ID', sort: true}
+                ,{field:'operatorName', align: 'center', title: '操作员姓名'}
+                ,{field:'operatorPwd', align: 'center', title: '密码', sort: true}
+                ,{field:'adminType', align: 'center', title: '是否管理员'}
+            ] ]
+
+        });
+    });
+</script>
+</body>
+</html>

@@ -38,6 +38,7 @@ public class LoginController {
     @ResponseBody
     public BaseResult<?> doLogin(@RequestBody OperatorVo operatorVo, HttpServletRequest request) {
         BaseResult<?> baseResult = null;
+        System.out.println(6666666);
         if (null != operatorVo) {
             Operator operator = this.iOperatorService.getOperatorByIdAndPwd(operatorVo);
             if (null != operator) {
