@@ -22,17 +22,17 @@
     </select>
 
 
-    <select id="queryAllOperator" resultMap="BaseResultMap" >
+    <select id="queryAllOperator" resultMap="BaseResultMap">
         select <include refid="Base_Column_List"></include>
         from operator
-        <where>
+       <!-- <where>
             <if test="operator_name!=null and operator_name!=''">
                 and operator_name like concat("%",#{operator.operatorName},"%")
             </if>
             <if test="operator_id!=null and operator_id!=''">
                 and operator_id like concat("%",#{operator.operatorId},"%")
             </if>
-        </where>
+        </where>-->
         group by operator_id
     </select>
 </mapper>

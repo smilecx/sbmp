@@ -11,9 +11,13 @@
 </form>
 
 <script>
+    var operatorVo={
+        "page":1,
+        "limit":10
+    };
+    function initData(){
     layui.use('table', function(){
         var table = layui.table;
-
         table.render({
             elem: '#test'
             ,url:'/operator/loadAllOperator'
@@ -23,7 +27,6 @@
                 ,groups: 1 //只显示 1 个连续页码
                 ,first: false //不显示首页
                 ,last: false //不显示尾页
-
             }
             ,cols: [ [
                 {field:'operatorId', align: 'center', title: '登录ID', sort: true}
@@ -34,6 +37,18 @@
 
         });
     });
+}
+    doAjax("/operator/loadAllOperator","post",JSON.stringify(operatorVo),"application/json",function (res) {
+      console.log(JSON.stringify(operatorVo)) ;
+        console.log(res);
+        if(res.code==1){
+            console.log(res.date);
+        }else{
+            alert(res.message);
+        }
+    })
+
+
 </script>
 </body>
 </html>

@@ -24,5 +24,5 @@ public interface OperatorMapper extends BaseMapper<Operator> {
     Operator queryOperatorByIdAndPwd(@Param("operator") Operator operator);
 
     //queryAllOperator 查询所有的操作员
-    List<OperatorVo> queryAllOperator(@Param("operatorVo")Operator operator, @Param("page")Page<OperatorVo> page);
+    List<OperatorVo> queryAllOperator(@Param("operator")Operator operator, @Param("page")Page<OperatorVo> page);
 }

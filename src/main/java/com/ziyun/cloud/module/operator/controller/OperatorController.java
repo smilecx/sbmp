@@ -1,11 +1,13 @@
 package com.ziyun.cloud.module.operator.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ziyun.cloud.constant.BaseResult;
 import com.ziyun.cloud.module.operator.service.IOperatorService;
 import com.ziyun.cloud.module.operator.vo.OperatorVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,10 +36,11 @@ public class OperatorController {
     //加载所有的操作员列表
     @RequestMapping(MODEL+"/loadAllOperator")
     @ResponseBody
-    public ModelAndView loadAllOperator(OperatorVo operatorVo){
-        ModelAndView view = new ModelAndView();
+    public BaseResult<?> loadAllOperator(@RequestBody OperatorVo operatorVo){
         Page<OperatorVo> page = this.iOperatorService.loadAllOperator(operatorVo);
-        view.addObject("page",page);
-        return view;
+        return BaseResult.success(page);
     }
+
+
+
 }
