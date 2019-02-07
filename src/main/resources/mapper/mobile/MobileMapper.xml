@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ziyun.cloud.module.operator.mapper.MobileMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.ziyun.cloud.module.operator.entity.Mobile">
+        <id column="mobile_number" property="mobileNumber" />
+        <result column="mobile_type" property="mobileType" />
+        <result column="card_number" property="cardNumber" />
+        <result column="available" property="available" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        mobile_number, mobile_type, card_number, available
+    </sql>
+
+</mapper>

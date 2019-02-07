@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>资源管理</title>
+    [#include "/includes/public.html" /]
+</head>
+<body>
+
+号码类型：<input type="radio" name="mobileType" id="type" value="sim">SIM &nbsp;
+         <input type="radio" name="mobileType" id="type" value="uim">UIM &nbsp;
+指定号段:从 <input type="text" name="startNum" id="snum">到 <input type="text" name="endNum" id="enum">
+<br>
+<input type="button" id="btn" value="随机生成区间10个电话号码">
+<a href="javascript:;" onclick="reload()">重置</a>
+</body>
+<script>
+    $("#btn").on("click",function () {
+        var MobileVo = {
+            "mobileType":$('input[type=radio][name=mobileType]:checked').val(),
+            "startNum":$("#snum").val(),
+            "endNum":$("#enum").val()
+        };
+        doAjax("/mobile/addMobileResource","post",JSON.stringify(MobileVo),"application/json",function (res) {
+            console.log(JSON.stringify(MobileVo)) ;
+            console.log(res);
+            if(res.code==1){
+                console.log(res.date);
+            }else{
+                alert(res.message);
+            }
+        });
+    });
+
+    function reload() {
+        window.location.reload();
+    }
+</script>
+
+
+</html>
